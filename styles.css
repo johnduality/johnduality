@@ -5,8 +5,8 @@
   --blue-deep: #15497f;
   --bg: #ffffff;
   --text: #1c2733;
+  --header-bg: rgba(255, 255, 255, 0.86);
   --serif: Georgia, "Times New Roman", serif;
-  --display: "Playfair Display", Georgia, serif;
 }
 
 * { box-sizing: border-box; }
@@ -21,20 +21,37 @@ body {
 a { color: var(--blue); text-decoration: none; }
 a:hover { color: var(--blue-deep); }
 
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 26px; }
 .wrap-narrow { max-width: 760px; margin: 0 auto; padding: 0 26px; }
-.home { padding-top: 40px; padding-bottom: 72px; }
+.home { padding-top: 26px; padding-bottom: 72px; }
 
-.site-title {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 30pt;
-  color: var(--blue);
-  text-align: center;
-  margin: 0 0 28px;
+/* Header — matches the Insight Retreats subpage */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--header-bg);
+  backdrop-filter: saturate(140%) blur(10px);
 }
-/* the title is already blue, so inherit rather than take the default link color */
-.site-title a { color: inherit; }
-.site-title a:hover { color: var(--blue-deep); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 4px 14px; min-height: 64px; padding-top: 8px; padding-bottom: 8px; }
+.brand {
+  font-family: var(--serif); font-weight: 700; font-size: 15px; line-height: 1;
+  color: var(--blue); white-space: nowrap;
+}
+.brand:hover { color: var(--blue-deep); }
+.header-actions { display: flex; align-items: center; gap: 18px; }
+.nav-link { font-family: var(--serif); font-size: 15px; font-weight: 700; }
+
+/* Matches the .intro rule on the Insight Retreats subpage. Note it uses the
+   body serif (Georgia), not a display face. */
+.home h1 {
+  margin: 30px auto 22px;
+  text-align: center;
+  font-size: 27px;
+  line-height: 1.6;
+  font-weight: 700;
+  color: var(--blue);
+  max-width: 700px;
+}
+@media (min-width: 800px) { .home h1 { max-width: none; white-space: nowrap; } }
 
 .home p { font-size: 17px; margin: 0 0 14px; }
 .home ul { margin: 0 0 22px; padding-left: 20px; }
