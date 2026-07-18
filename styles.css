@@ -5,6 +5,7 @@
   --blue-deep: #15497f;
   --bg: #ffffff;
   --text: #1c2733;
+  --border: #dde6f0;
   --header-bg: rgba(255, 255, 255, 0.86);
   --serif: Georgia, "Times New Roman", serif;
 }
@@ -40,20 +41,33 @@ a:hover { color: var(--blue-deep); }
 }
 .brand:hover { color: var(--blue-deep); }
 .header-actions { display: flex; align-items: center; gap: 18px; }
+.nav-links { display: flex; align-items: center; gap: 18px; }
 .nav-link { font-family: var(--serif); font-size: 15px; font-weight: 700; }
 
-/* On narrow screens vertical space is scarce, so let the header scroll away
-   instead of pinning it to the top. */
-@media (max-width: 820px) {
-  .site-header { position: static; }
+/* The "Pages" toggle — hidden on desktop (links show inline), shown on mobile. */
+.nav-toggle {
+  display: none; align-items: center; gap: 5px;
+  font-family: var(--serif); font-size: 15px; font-weight: 700;
+  color: var(--blue); background: none; border: 0; padding: 0; cursor: pointer;
+}
+.nav-toggle:hover { color: var(--blue-deep); }
+.nav-chevron { transition: transform .15s ease; }
+.nav-toggle[aria-expanded="true"] .nav-chevron { transform: rotate(180deg); }
 
-  /* Keep the brand on the left and the nav on the right on the same row.
-     flex-start (not center) keeps the brand level with the FIRST nav line
-     when the links wrap to two lines. */
-  .header-inner { flex-wrap: nowrap; align-items: flex-start; }
-  /* The nav links wrap among themselves and stay right-aligned, so an
-     overflowing link drops to a second right-adjusted line. */
-  .header-actions { flex-wrap: wrap; justify-content: flex-end; row-gap: 4px; }
+/* Mobile: collapse the links behind a "Pages" dropdown so the brand keeps its
+   own line and never collides with the nav. */
+@media (max-width: 820px) {
+  .header-actions { position: relative; }
+  .nav-toggle { display: inline-flex; }
+  .nav-links {
+    display: none;
+    position: absolute; top: calc(100% + 8px); right: 0;
+    flex-direction: column; align-items: flex-end; gap: 12px;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 16px; box-shadow: 0 8px 24px rgba(20, 50, 90, 0.12);
+    z-index: 60; white-space: nowrap;
+  }
+  .nav-links.is-open { display: flex; }
 }
 
 /* Matches the .intro rule on the Insight Retreats subpage. Note it uses the
