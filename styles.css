@@ -1,0 +1,41 @@
+/* Homepage — johnduality.net */
+
+:root {
+  --blue: #1e5fa8;
+  --blue-deep: #15497f;
+  --bg: #ffffff;
+  --text: #1c2733;
+  --serif: Georgia, "Times New Roman", serif;
+  --display: "Playfair Display", Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--serif);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { color: var(--blue-deep); }
+
+.wrap-narrow { max-width: 760px; margin: 0 auto; padding: 0 26px; }
+.home { padding-top: 40px; padding-bottom: 72px; }
+
+.site-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 30pt;
+  color: var(--blue);
+  text-align: center;
+  margin: 0 0 28px;
+}
+/* the title is already blue, so inherit rather than take the default link color */
+.site-title a { color: inherit; }
+.site-title a:hover { color: var(--blue-deep); }
+
+.home p { font-size: 17px; margin: 0 0 14px; }
+.home ul { margin: 0 0 22px; padding-left: 20px; }
+.home li { font-size: 17px; margin-bottom: 8px; }
