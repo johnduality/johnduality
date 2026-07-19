@@ -22,6 +22,11 @@ body {
 a { color: var(--blue); text-decoration: none; }
 a:hover { color: var(--blue-deep); }
 
+/* Standard for hero/section headings: even out line lengths when they wrap so
+   they never leave an orphan word on its own line. :where() keeps specificity
+   at 0, so it sets a default without overriding any per-heading styles. */
+:where(h1, h2, h3, .intro) { text-wrap: balance; }
+
 .wrap { max-width: 1160px; margin: 0 auto; padding: 0 26px; }
 .wrap-narrow { max-width: 760px; margin: 0 auto; padding: 0 26px; }
 /* padding-top matches the .intro top margin on the subpage, so the first
